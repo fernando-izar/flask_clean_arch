@@ -1,23 +1,28 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from .models import db
+from .models import Product
+from .repositories import SaleRepository
+from sale.application.sale.sale_manager import SaleManager
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+db.init_app(app)
 app.app_context().push()
+# db.create_all()
 
-class Product(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
 
-    def __repr__(self):
-        return '<User %r>' % self.name
-
-@app.route('/')
+@app.route("/")
 def hello_world():
-    return {'message': 'Hello, World!'}	
+    return {"message": "Hello, World!"}
 
-@app.route('/products')	
+
+@app.route("/products")
 def get_products():
     products = Product.query.all()
-    return {'products': [product.name for product in products]}
+    return {"products": [product.name for product in products]}
+
+
+@app.route("/sales")
+def get_sales():
+    repository = SaleRepository()
+    manager = SaleManager(repository)

@@ -1,7 +1,7 @@
-class ProductNameIsInvalid(Exception):
+class SaleDateIsInvalid(Exception):
     def __init__(self, message):
         self.message = message
 
-class ProductIdIsInvalid(Exception):
+class SaleQuantityIsInvalid(Exception):
     def __init__(self, message):
         self.message = message
