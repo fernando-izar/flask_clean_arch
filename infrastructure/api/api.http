@@ -1,5 +1,11 @@
 GET http://127.0.0.1:5000/products
 
-GET http://127.0.0.1:5000/sales
+# GET http://127.0.0.1:5000/sales
+
+# POST http://127.0.0.1:5000/product
+# content-type: application/json
+# {
+#     "name": "Product 2",
+# }
 
 

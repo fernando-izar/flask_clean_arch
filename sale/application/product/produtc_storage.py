@@ -14,3 +14,7 @@ class ProductStorage(ABC):
     @abstractmethod
     def get_all_products(self):
         pass
+
+    @abstractmethod
+    def create_product(self, product_dto: ProductDto):
+        pass

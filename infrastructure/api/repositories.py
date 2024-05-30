@@ -39,10 +39,14 @@ class ProductRepository(ProductStorage):
 
     def _model_to_dto(self, product):
         return ProductDto(
-            id=product.id,
             name=product.name,
         )
 
     def get_all_products(self):
         products = Product.query.all()
         return [self._model_to_dto(product) for product in products]
+
+    def create_product(self, product_dto: ProductDto):
+        product = Product(name=product_dto.name)
+        self.db.session.add(product)
+        self.db.session.commit()
