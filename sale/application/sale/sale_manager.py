@@ -1,6 +1,6 @@
 from sale.domain.sale.exceptions import SaleDateIsInvalid, SaleQuantityIsInvalid
 from sale.application.sale.sale_dto import SaleDto
-from sale.domain.product.exceptions import ProductNameIsInvalid, ProductIdIsInvalid
+from sale.domain.product.exceptions import ProductNameIsInvalid
 from sale.application.sale.sale_storage import SaleStorage
 
 
@@ -21,8 +21,6 @@ class SaleManager(object):
         except SaleQuantityIsInvalid as e:
             return {"message": e.message}
         except ProductNameIsInvalid as e:
-            return {"message": e.message}
-        except ProductIdIsInvalid as e:
             return {"message": e.message}
 
     def get_sales(self):
