@@ -2,8 +2,11 @@ from sale.domain.product.exceptions import ProductNameIsInvalid
 
 
 class Product(object):
+    id: int
+    name: str
 
     def __init__(self, name):
+        self.id = None
         self.name = name
 
     def is_valid(self):

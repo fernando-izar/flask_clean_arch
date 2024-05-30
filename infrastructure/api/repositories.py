@@ -38,9 +38,9 @@ class ProductRepository(ProductStorage):
         pass
 
     def _model_to_dto(self, product):
-        return ProductDto(
-            name=product.name,
-        )
+        product_dto = ProductDto(name=product.name)
+        product_dto.id = product.id
+        return product_dto
 
     def get_all_products(self):
         products = Product.query.all()
