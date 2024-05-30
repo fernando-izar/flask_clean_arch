@@ -24,3 +24,6 @@ class SaleManager(object):
             return {"message": e.message}
         except ProductIdIsInvalid as e:
             return {"message": e.message}
+
+    def get_sales(self):
+        return self.storage.get_all_sales()
